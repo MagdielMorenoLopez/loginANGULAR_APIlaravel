@@ -1,0 +1,37 @@
+<div class="grid grid-cols-2 gap-4">
+    <div class="h-screen content-center flex flex-wrap space-y-3">
+        <form [formGroup]="form" class="content-center flex flex-wrap space-y-3" (submit)="submit()">
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  m-auto text-black font-bold text-3xl pb-2 ">Inicio de Sesión</div>    
+            </div>
+            <div class="w-full">
+                <div  class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Email</div>    
+            </div>
+            <input  type="email" formControlName="email" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" placeholder="Ingrese su correo">
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96 font-bold m-auto text-gray-500 text-sm">Contraseña</div>    
+            </div>
+            <input type="password" formControlName="password" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" placeholder="Contraseña">
+            <div class="w-full">
+                <button class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96   border border-gray-400 focus:outline-none focus:border-gray-500 p-2 text-base m-auto mt-4 rounded-full bg-gray-600 text-white text-bold  hover:bg-gray-500">Ingresar</button>
+            </div>
+            <div class="w-full">
+                <a href=" " class="block w-full  m-auto text-gray-500 text-center">¿Olvidaste tu contraseña?</a>     
+            </div>
+            <div class="w-full">
+                <p  class="block w-full  m-auto text-gray-500  text-center"> ¿No tienes una cuenta?
+                    <a  class="w-full  m-auto text-blue-500  text-center" routerLink="/register">Registrate</a> 
+                </p>
+            </div>
+        </form>
+        
+        
+        
+    </div>
+    <div class="bg-gray-800 h-screen content-center flex flex-wrap space-y-0 w-full">
+        <div class="block w-full text-white font-sans text-center py-5 sm:text-5xl md:text-6xl lg:text-6xl text-3xl">
+            Bienvenido! 
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

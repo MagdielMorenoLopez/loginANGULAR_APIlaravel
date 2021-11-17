@@ -1,0 +1,199 @@
+<div class="flex justify-start">
+    <div class="">
+        <div class="text-lg font-bold pl-5 pt-5">{{module.aplication}} - {{module.name}} - Usuarios</div>
+    </div>
+    <div class="">
+        <button
+            class="mt-6 ml-2 justify-self-end border border-green-400 rounded-full text-green-400 hover:border-green-600 hover:text-green-600 transition duration-500"
+            onmouseenter="openPopover(event,'tooltip-nuevo')" 
+            onmouseleave="openPopover(event,'tooltip-nuevo')"
+            onclick="toggleModal('modal-example-small')">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <div class="hidden bg-white border-0 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+            id="tooltip-nuevo">
+            <div>
+                <div class="bg-white text-gray opacity-75 px-4 py-2 mb-1 rounded-md border border-solid">
+                    Agregar usuarios
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="p-5">
+    <table class="table-fixed border-collapse shadow-md w-full">
+        <thead>
+            <tr class="border h-12">
+                <th class="w-2/6 text-sm text-left pl-5 truncate">Nombre</th>
+                <th class="w-2/6 text-sm text-left truncate">Telefono</th>
+                <th class="w-2/6 text-sm truncate">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr class="border h-12" *ngFor="let user_has_module of user_has_modules">
+                <td class="pl-5 text-sm">{{user_has_module.name}}</td>
+                <td class="text-sm">{{user_has_module.phone}}</td>
+
+                <td class="flex flex-wrap justify-center">
+
+                    <button
+                        class=" mx-1 my-2 px-4 py-1 text-sm border border-red-400 rounded-full text-red-400 hover:border-red-600 hover:text-red-600 transition duration-500"
+                        onmouseenter="openPopover(event,'tooltip-eliminar')"
+                        onmouseleave="openPopover(event,'tooltip-eliminar')"
+                        onclick="toggleModal('modal-eliminar-small')" (click)="data(user_has_module)">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <div class="hidden bg-white border-0 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+                        id="tooltip-eliminar">
+                        <div>
+                            <div class="bg-white text-gray opacity-75 px-4 py-2 mb-1 rounded-md border border-solid">
+                                Eliminar
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+    id="modal-example-small">
+    <div class="relative w-auto my-6 mx-auto max-w-xl">
+        <!--content-->
+        <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <!--header-->
+            <div class="flex items-start justify-between ml-10 mt-10 rounded-t">
+                <h3 class="text-xl font-semibold">
+                    Usuario
+                </h3>
+            </div>
+            <!--body-->
+            <div class="relative -mt-6 p-10 flex-auto">
+
+                <table class="table-fixed border-collapse shadow-md w-full">
+                    <thead>
+                        <tr class="border h-12">
+                            <th class="w-1/6 text-sm text-left pl-5 truncate">id</th>
+                            <th class="w-2/6 text-sm text-left pl-5 truncate">Nombre</th>
+                            <th class="w-2/6 text-sm text-left truncate">Telefono</th>
+                            <th class="w-2/6 text-sm truncate">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        
+                        <tr class="border h-12" *ngFor="let user of users">
+                            <!--<form [formGroup]="form" id="basic-form" class="content-center flex flex-wrap space-y-4">-->
+                            <td class="pl-5 text-sm">{{user.id}}</td>
+                            <td class="pl-5 text-sm">{{user.name}}</td>
+                            <td class="text-sm">{{user.phone}}</td>
+
+                            <td class="flex flex-wrap justify-center">
+
+                                <button
+                                    class=" mx-1 my-2 px-4 py-1 text-sm border border-green-400 rounded-full text-green-400 hover:border-green-600 hover:text-green-600 transition duration-500"
+                                    onmouseenter="openPopover(event,'tooltip-nuevo')"
+                                    onmouseleave="openPopover(event,'tooltip-nuevo')" (click)="create(user.id)">
+                                    <!-- (click)="addUser(user)"  -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+
+                                <div class="hidden bg-white border-0 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+                                    id="tooltip-eliminar">
+                                    <div>
+                                        <div
+                                            class="bg-white text-gray opacity-75 px-4 py-2 mb-1 rounded-md border border-solid">
+                                            Agregar
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </td>
+                        <!--</form>-->
+                        </tr>
+                        
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!--footer-->
+            <div class="flex items-center justify-end p-6 border-t border-solid border-gray-200 rounded-b">
+                <button
+                    class="text-purple-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('modal-example-small')" (click)="iniciarForm()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-example-small-backdrop"></div>
+<!-- End Modal -->
+
+<!-- Modal  de seguro de eliminar-->
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+    id="modal-eliminar-small">
+    <div class="relative w-auto my-6 mx-auto max-w-xl">
+        <!--content-->
+        <div
+            class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <!--header-->
+            <div class="flex items-start justify-between ml-10 mt-10 rounded-t">
+                <h3 class="text-xl font-semibold">
+                    Eliminar Usuario
+                </h3>
+                <button
+                    class="p-1 ml-auto bg-transparent border-0 text-gray-300 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onclick="toggleModal('modal-eliminar-small')">
+                    <span class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
+            </div>
+            <!--body-->
+            <div class="relative -mt-6 p-10 flex-auto">
+                <div class="w-full space-y-1">
+                    <div class="block w-full m-auto text-black text-sm">¿Estas seguro de eliminar el usuario?</div>
+                </div>
+            </div>
+            <!--footer-->
+            <div class="flex items-center justify-end p-6 border-t border-solid border-gray-200 rounded-b">
+                <button
+                    class="text-purple-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('modal-eliminar-small')" (click)="iniciarForm()">
+                    Cerrar
+                </button>
+                <button
+                    class="bg-purple-500 text-white active:bg-purple-600 font-bold text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('modal-eliminar-small')" (click)="delete()">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-eliminar-small-backdrop"></div>
+<!-- End Modal -->

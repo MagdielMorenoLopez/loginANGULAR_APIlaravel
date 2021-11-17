@@ -1,0 +1,63 @@
+<div class="grid grid-cols-2 gap-4">
+    <div class="h-screen content-center flex flex-wrap space-y-3">
+        <form [formGroup]="form" class=" content-center flex flex-wrap space-y-3" (submit)="submit()">
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  m-auto text-black font-bold text-3xl pb-2 ">Crear cuenta</div>    
+            </div>
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Nombre</div>    
+            </div>
+            <input formControlName="name" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="text" placeholder="Ingrese su nombre" required>
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Apellido</div>    
+            </div>
+            <input formControlName="lastname" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="text" placeholder="Ingrese su apellido" required>
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Teléfono</div>    
+            </div>
+            <input formControlName="phone" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="text" placeholder="Ingrese su número de teléfono" required>
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Dirección</div>    
+            </div>
+            <input formControlName="direction" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="text" placeholder="Ingrese su dirección" required>
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Código postal</div>    
+            </div>
+            <input formControlName="cp" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="number" placeholder="Ingrese su código postal" required>
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Email</div>    
+            </div>
+            <input formControlName="email" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="email" required placeholder="Ingrese su correo">
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96 font-bold m-auto text-gray-500 text-sm">Contraseña</div>    
+            </div>
+            <input formControlName="password" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="password" required placeholder="Contraseña">
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96 font-bold m-auto text-gray-500 text-sm">Confirmar contraseña</div>    
+            </div>
+            <input formControlName="password_confirmation" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="password" required placeholder="Porfavor confirme su contraseña">
+            <div class="w-full">
+                <div class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  font-bold m-auto text-gray-500 text-sm ">Pérfil</div>    
+            </div>
+            <input formControlName="profile" class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96  border border-gray-400 focus:outline-none focus:border-gray-500 p-1 text-sm m-auto" type="text" placeholder="Ingrese su pérfil" required>
+            <div class="w-full">
+                <button class="block w-full sm:w-full sm:w-full md:w-96 lg:w-96   border border-gray-400 focus:outline-none focus:border-gray-500 p-2 text-base m-auto mt-4 rounded-full bg-gray-600 text-white text-bold  hover:bg-gray-500">Registrarme</button>
+            </div>
+            
+            
+          </form>
+        
+        
+    </div>
+    <div class="bg-gray-800 h-screen content-center flex flex-wrap space-y-0 w-full">
+        <div class="block w-full text-white font-sans text-center py-5 sm:text-5xl md:text-6xl lg:text-6xl text-3xl">
+            {{title}}
+        </div>
+        <div class="w-full">
+            <p  class="block w-full  m-auto text-gray-500  text-center"> Ya tengo una cuenta
+                <a  class="w-full  m-auto text-blue-500  text-center" routerLink="/">Ingresar</a> 
+            </p>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

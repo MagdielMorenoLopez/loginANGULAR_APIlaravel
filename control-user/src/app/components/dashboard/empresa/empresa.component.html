@@ -1,0 +1,249 @@
+<div class="flex justify-start">
+    <div class="">
+        <div class="text-lg font-bold pl-5 pt-5">{{aplication.name}} - Empresa</div>
+    </div>
+    <div class="flex">
+        <button
+            class="mt-6 ml-6 px-4 mb-1 justify-self-end border border-green-400 rounded-full text-green-400 hover:border-green-600 hover:text-green-600 transition duration-500"
+            onmouseenter="openPopover(event,'tooltip-nuevo')" onmouseleave="openPopover(event,'tooltip-nuevo')"
+            onclick="toggleModal('modal-example-small')">
+
+            Nueva empresa
+        </button>
+
+        <div class="hidden bg-white border-0 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+            id="tooltip-nuevo">
+            <div>
+                <div class="bg-white text-gray opacity-75 px-4 py-2 mb-1 rounded-md border border-solid">
+                    Nueva empresa
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="p-5">
+    <table class="table-fixed border-collapse shadow-md w-full">
+        <thead>
+            <tr class="border h-12">
+                <th class="w-full text-sm text-left pl-1 truncate">Empresa</th>
+                <th class="w-full text-sm text-left truncate">Dirección</th>
+                <th class="w-2/5 text-sm text-left Pl-5">CP</th>
+                <th class="w-full text-sm text-left pl-5">Telefono</th>
+                <th class="w-full text-sm text-left truncate">Email</th>
+                <th class="w-full text-sm text-left truncate">RFC</th>
+
+                <th class="w-full text-sm truncate">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr class="border h-12" *ngFor="let businesses of businesss">
+                <td class="p-1 text-sm truncate">{{businesses.name}}</td>
+                <td class="p-1 text-sm truncate">{{businesses.direction}}</td>
+                <td class="p-1 text-sm truncate">{{businesses.cp}}</td>
+                <td class="p-1 text-sm truncate">{{businesses.phone}}</td>
+                <td class="p-1 text-sm truncate">{{businesses.email}}</td>
+                <td class="p-1 text-sm truncate">{{businesses.rfc}}</td>
+
+                <td class="flex flex-wrap justify-center">
+
+                    <button
+                        class=" mx-1 my-2 px-3 py-1 text-sm border border-yellow-500 rounded-full text-yellow-500 hover:border-yellow-700 hover:text-yellow-700 transition duration-500"
+                        onmouseenter="openPopover(event,'tooltip-empresa')"
+                        onmouseleave="openPopover(event,'tooltip-empresa')"
+                        routerLink="/dashboard/unidad/{{aplication.name}}/{{businesses.id}}/{{businesses.name}}">
+                        <!--routerLink="/dashboard/empresa/{{aplication.name}}/{{empresa.id}}/{{empresa.name}}"-->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                clip-rule="evenodd" />
+                            <path
+                                d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                        </svg>
+                    </button>
+                    <div class="hidden bg-white border-0 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+                        id="tooltip-empresa">
+                        <div>
+                            <div class="bg-white text-gray opacity-75 px-4 py-2 mb-1 rounded-md border border-solid">
+                                Unidad
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="mx-1 my-2 px-3 py-1 text-sm border border-blue-400 rounded-full text-blue-400 hover:border-blue-600 hover:text-blue-600 transition duration-500"
+                        onmouseenter="openPopover(event,'tooltip-editar')"
+                        onmouseleave="openPopover(event,'tooltip-editar')" onclick="toggleModal('modal-example-small')"
+                        (click)="data(businesses)">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                    </button>
+
+                    <div class="hidden bg-white border-0 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+                        id="tooltip-editar">
+                        <div>
+                            <div class="bg-white text-gray opacity-75 px-4 py-2 mb-1 rounded-md border border-solid">
+                                Editar
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button
+                        class=" mx-1 my-2 px-3 py-1 text-sm border border-red-400 rounded-full text-red-400 hover:border-red-600 hover:text-red-600 transition duration-500"
+                        onmouseenter="openPopover(event,'tooltip-eliminar')"
+                        onmouseleave="openPopover(event,'tooltip-eliminar')"
+                        onclick="toggleModal('modal-eliminar-small')" (click)="data(businesses)">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <div class="hidden bg-white border-0 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+                        id="tooltip-eliminar">
+                        <div>
+                            <div class="bg-white text-gray opacity-75 px-4 py-2 mb-1 rounded-md border border-solid">
+                                Eliminar
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Modal aplicacion empresa -->
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+    id="modal-example-small">
+    <div class="relative w-auto my-6 mx-auto max-w-md">
+        <!--content-->
+        <div
+            class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <!--header-->
+            <div class="flex items-start justify-between ml-10 mt-5 rounded-t">
+                <h3 class="text-xl font-semibold">
+                   Empresa
+                </h3>
+            </div>
+            <!--body-->
+            <div class="relative -mt-6 p-10 flex-auto">
+                <form [formGroup]="formEmpre" id="basic-form" class="content-center flex flex-wrap space-y-4">
+
+                    <div class="w-full space-y-0.5">
+                        <div class="block w-full text-black text-sm">Nombre de la empresa</div>
+                        <input
+                            class="block w-full rounded-sm border border-gray-400 focus:outline-none focus:border-blue-500 p-1 text-gray-800 text-xs m-auto "
+                            type="text" placeholder="¿Cuál es el nombre de la empresa?" formControlName="name">
+                    </div>
+                    <div class="w-full space-y-0.5">
+                        <div class="block w-full text-black text-sm">Dirección</div>
+                        <input formControlName="direction"
+                            class="block w-full rounded-sm border border-gray-400 focus:outline-none focus:border-blue-500 p-1 text-gray-800 text-xs"
+                            type="text" placeholder="¿Cuál es la dirección de la empresa?">
+                    </div>
+                    <div class="w-full space-y-0.5">
+                        <div class="block w-full text-black text-sm">CP</div>
+                        <input formControlName="cp"
+                            class="block w-full rounded-sm border border-gray-400 focus:outline-none focus:border-blue-500 p-1 text-gray-800 text-xs"
+                            type="text" placeholder="¿Cuál es el CP de la empresa?, min 5 digitos">
+                    </div>
+                    <div class="w-full space-y-0.5">
+                        <div class="block w-full text-black text-sm">Contacto</div>
+                        <input formControlName="contact"
+                            class="block w-full rounded-sm border border-gray-400 focus:outline-none Sfocus:border-blue-500 p-1 text-gray-800 text-xs"
+                            type="text" placeholder="¿Cuál es el Contacto de la empresa?">
+                    </div>
+                    <div class="w-full space-y-0.5">
+                        <div class="block w-full text-black text-sm">Teléfono</div>
+                        <input formControlName="phone"
+                            class="block w-full rounded-sm border border-gray-400 focus:outline-none focus:border-blue-500 p-1 text-gray-800 text-xs"
+                            type="text" placeholder="¿Cuál es el Telefono de la empresa?, 10 digitos">
+                    </div>
+                    <div class="w-full space-y-0.5">
+                        <div class="block w-full text-black text-sm">Email</div>
+                        <input formControlName="email"
+                            class="block w-full rounded-sm border border-gray-400 focus:outline-none focus:border-blue-500 p-1 text-gray-800 text-xs m-auto"
+                            type="text" placeholder="¿Cuál es el email de la empresa?">
+                    </div>
+                    <div class="w-full space-y-0.5">
+                        <div class="block w-full text-black text-sm">RFC</div>
+                        <input formControlName="rfc"
+                            class="block w-full rounded-sm border border-gray-400 focus:outline-none focus:border-blue-500 p-1 text-gray-800 text-xs"
+                            type="text" placeholder="¿Cuál es el RFC de la empresa?,max 13 digitos">
+                    </div>
+                </form>
+            </div>
+            <!--footer-->
+            <div class="flex items-center justify-end p-3 border-t border-solid border-gray-200 rounded-b">
+                <button
+                    class="text-purple-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('modal-example-small')" (click)="iniciarForm()">
+                    Cerrar
+                </button>
+                <button
+                    class="bg-purple-500 text-white active:bg-purple-600 font-bold text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('modal-example-small')" (click)="create()">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-example-small-backdrop"></div>
+<!-- End Modal -->
+
+<!-- Modal -->
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+    id="modal-eliminar-small">
+    <div class="relative w-auto my-6 mx-auto max-w-xl">
+        <!--content-->
+        <div
+            class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <!--header-->
+            <div class="flex items-start justify-between ml-10 mt-10 rounded-t">
+                <h3 class="text-xl font-semibold">
+                    Eliminar Empresa
+                </h3>
+                <button
+                    class="p-1 ml-auto bg-transparent border-0 text-gray-300 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onclick="toggleModal('modal-eliminar-small')">
+                    <span class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
+            </div>
+            <!--body-->
+            <div class="relative -mt-6 p-10 flex-auto">
+                <div class="w-full space-y-1">
+                    <div class="block w-full m-auto text-black text-sm">¿Estas seguro de eliminar la Empresa?</div>
+                </div>
+            </div>
+            <!--footer-->
+            <div class="flex items-center justify-end p-6 border-t border-solid border-gray-200 rounded-b">
+                <button
+                    class="text-purple-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('modal-eliminar-small')" (click)="iniciarForm()">
+                    Cerrar
+                </button>
+                <button
+                    class="bg-purple-500 text-white active:bg-purple-600 font-bold text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('modal-eliminar-small')" (click)="delete()">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-eliminar-small-backdrop"></div>
+<!-- End Modal -->
